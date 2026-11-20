@@ -16,14 +16,27 @@ import { billigast } from "./meny";
 // 6. Säkerhetsförsök: sätt p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'
 //    Vad händer i Console? Byt sedan till p.textContent med samma text. Vad händer nu?
 // TODO
-document.querySelector("h1");
+
+console.log(document.querySelector("h1")?.textContent);
 
 const rubrik = document.querySelector("#hero-rubrik");
-
 if(rubrik){
   rubrik.textContent = "Välkommen in!"      // går bra: TypeScript vet att rubrik finns här
 }
-rubrik?.classList.add("dagens");  
+rubrik?.classList.add("dagens");
+
+ const lankar = document.querySelectorAll<HTMLAnchorElement>("nav a");
+for(const lank of lankar) {
+    console.log(lank.href, lank.textContent); 
+}
+
+console.log(document.querySelector("#finns-inte")?.textContent);
+
+const nyttTips = document.createElement("p");
+nyttTips.textContent = "Dagens tips: prova en kardemummabulle.";
+const hero = document.querySelector("#hero");
+hero?.append(nyttTips);
+
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
