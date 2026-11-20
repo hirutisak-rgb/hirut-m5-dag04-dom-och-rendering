@@ -37,6 +37,11 @@ nyttTips.textContent = "Dagens tips: prova en kardemummabulle.";
 const hero = document.querySelector("#hero");
 hero?.append(nyttTips);
 
+hero?.classList.add("dagens");
+hero?.classList.remove("dagens");
+
+nyttTips.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">';
+nyttTips.textContent = '<img src="x" onerror="console.log(\'Attack!\')">';
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
