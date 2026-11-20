@@ -16,7 +16,14 @@ import { billigast } from "./meny";
 // 6. Säkerhetsförsök: sätt p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'
 //    Vad händer i Console? Byt sedan till p.textContent med samma text. Vad händer nu?
 // TODO
+document.querySelector("h1");
 
+const rubrik = document.querySelector("#hero-rubrik");
+
+if(rubrik){
+  rubrik.textContent = "Välkommen in!"      // går bra: TypeScript vet att rubrik finns här
+}
+rubrik?.classList.add("dagens");  
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
