@@ -40,12 +40,12 @@ export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
 // 3. Sätt rubrikens text: "Meny (8 rätter)". Ett enda: "Meny (1 rätt)".
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
   // TODO
-  const rubrik = document.querySelector("#hero-rubrik");
-    if(rubrik){
-    rubrik.textContent = "Välkommen in!"      // går bra: TypeScript vet att rubrik finns här
+  if(antal === 2){
+    element.textContent = "Meny (1 rätt)";
+  }else{
+    element.textContent = "Meny (8 rätter)";
   }
 }
-
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
 //    data-id, och inte på något annat kort. Anropas igen = markeringen flyttas.
 export function markeraDagensRatt(container: HTMLElement, id: number): void {
