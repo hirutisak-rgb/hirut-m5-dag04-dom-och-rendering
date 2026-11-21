@@ -13,6 +13,16 @@ import type { Ratt } from "./typer";
 //    </article>
 export function skapaRattKort(ratt: Ratt): HTMLElement {
   // TODO
+  const kort = document.createElement("article");
+
+  const rubrik = document.createElement("h3");
+  rubrik.textContent = ratt.namn;
+
+  const pris = document.createElement("p");
+  pris.textContent = ratt.pris + " kr";
+
+  kort.append(rubrik, pris);
+  return kort; // funktionen placerar INTE själv
 }
 
 // 2. Töm containern och lägg in ett kort per rätt.
