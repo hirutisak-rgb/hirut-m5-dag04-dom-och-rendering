@@ -22,18 +22,28 @@ export function skapaRattKort(ratt: Ratt): HTMLElement {
   pris.textContent = ratt.pris + " kr";
 
   kort.append(rubrik, pris);
-  return kort; // funktionen placerar INTE själv
+  return kort;
 }
 
 // 2. Töm containern och lägg in ett kort per rätt.
 //    Är listan tom: visa <p class="tom">Inga rätter hittades.</p> istället.
 export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
   // TODO
+  container.replaceChildren();
+
+  for (const ratt of ratter) {
+    container.append(skapaRattKort(ratt));
+  }
 }
+
 
 // 3. Sätt rubrikens text: "Meny (8 rätter)". Ett enda: "Meny (1 rätt)".
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
   // TODO
+  const rubrik = document.querySelector("#hero-rubrik");
+    if(rubrik){
+    rubrik.textContent = "Välkommen in!"      // går bra: TypeScript vet att rubrik finns här
+  }
 }
 
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
