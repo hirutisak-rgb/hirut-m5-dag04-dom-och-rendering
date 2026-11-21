@@ -50,5 +50,10 @@ nyttTips.textContent = '<img src="x" onerror="console.log(\'Attack!\')">';
 //    och markeraDagensRatt.
 // TODO
 
-const menyLista = document.querySelector("#meny-lista");
-const menyRubrik = document.querySelector("#meny-rubrik");
+const menyLista = document.querySelector<HTMLElement>("#meny-lista");
+const menyRubrik = document.querySelector<HTMLElement>("#meny-rubrik");
+
+if(menyLista && menyRubrik){
+    visaMeny(menyLista, meny);
+    uppdateraRubrik(menyRubrik, meny.length)
+}
