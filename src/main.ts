@@ -49,3 +49,6 @@ nyttTips.textContent = '<img src="x" onerror="console.log(\'Attack!\')">';
 // 9. Dagens rätt = den billigaste lunchen. Använd filter och billigast (från meny.js)
 //    och markeraDagensRatt.
 // TODO
+
+const menyLista = document.querySelector("#meny-lista");
+const menyRubrik = document.querySelector("#meny-rubrik");

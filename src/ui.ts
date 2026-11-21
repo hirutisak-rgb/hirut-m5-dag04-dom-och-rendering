@@ -16,7 +16,7 @@ export function skapaRattKort(ratt: Ratt): HTMLElement {
   const kort = document.createElement("article");
 
   const bild = document.createElement("img");
-  bild.src = "...";
+  bild.src = ratt.bild?? "";
   bild.alt = "Illustration av " + ratt.namn;
 
   const beskrivning = document.createElement("p");
@@ -42,9 +42,9 @@ export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
   // TODO
    container.replaceChildren();
 
-  if(ratter.length === null){
+  if(ratter.length === 0){
     const text = document.createElement("p");
-    text.textContent = "Inga rätter hittades";
+    text.textContent = "Inga rätter hittades.";
     text.classList.add("tom");
     container.append(text);
   }
@@ -68,5 +68,11 @@ export function uppdateraRubrik(element: HTMLElement, antal: number): void {
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
 //    data-id, och inte på något annat kort. Anropas igen = markeringen flyttas.
 export function markeraDagensRatt(container: HTMLElement, id: number): void {
-  // TODO
+  for (const kort of container.querySelectorAll<HTMLElement>("[data-id]")) {
+    if (kort.dataset.id === String(id)) {
+      kort.classList.add("dagens");
+    } else {
+      kort.classList.remove("dagens");
+    }
+  }
 }
