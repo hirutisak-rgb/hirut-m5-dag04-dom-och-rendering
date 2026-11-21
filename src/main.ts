@@ -57,3 +57,9 @@ if(menyLista && menyRubrik){
     visaMeny(menyLista, meny);
     uppdateraRubrik(menyRubrik, meny.length)
 }
+
+const lunchRatter = meny.filter(ratt => ratt.kategori === "lunch");
+const dagensLunch = billigast(lunchRatter);
+if (dagensLunch && menyLista) {
+  markeraDagensRatt(menyLista, dagensLunch.id);
+}
