@@ -15,13 +15,24 @@ export function skapaRattKort(ratt: Ratt): HTMLElement {
   // TODO
   const kort = document.createElement("article");
 
+  const bild = document.createElement("img");
+  bild.src = "...";
+  bild.alt = "Illustration av " + ratt.namn;
+
+  const beskrivning = document.createElement("p");
+  beskrivning.textContent = ratt.beskrivning ?? "";
+
   const rubrik = document.createElement("h3");
   rubrik.textContent = ratt.namn;
 
   const pris = document.createElement("p");
-  pris.textContent = ratt.pris + " kr";
+  pris.textContent = formateraPris(ratt.pris);
+  pris.classList.add("pris");
 
-  kort.append(rubrik, pris);
+  kort.append(bild, rubrik, beskrivning, pris);
+
+  kort.dataset.id = String(ratt.id);
+
   return kort;
 }
 
@@ -29,10 +40,18 @@ export function skapaRattKort(ratt: Ratt): HTMLElement {
 //    Är listan tom: visa <p class="tom">Inga rätter hittades.</p> istället.
 export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
   // TODO
-  container.replaceChildren();
+   container.replaceChildren();
 
-  for (const ratt of ratter) {
-    container.append(skapaRattKort(ratt));
+  if(ratter.length === null){
+    const text = document.createElement("p");
+    text.textContent = "Inga rätter hittades";
+    text.classList.add("tom");
+    container.append(text);
+  }
+  else{
+    for (const ratt of ratter) {
+      container.append(skapaRattKort(ratt));
+    }
   }
 }
 
@@ -41,9 +60,9 @@ export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
   // TODO
   if(antal === 1){
-    element.textContent = "Meny " + "(" + antal + "rätt)";
+    element.textContent = "Meny " + "(" + antal + " rätt)";
   }else{
-    element.textContent = "Meny " + "(" + antal + "rätter)";
+    element.textContent = "Meny " + "(" + antal + " rätter)";
   }
 }
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
